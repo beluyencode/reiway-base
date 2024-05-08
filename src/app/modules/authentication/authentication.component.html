@@ -1,0 +1,13 @@
+<div
+    class="h-100vh pt-50 pb-50"
+    [class.component-dark-theme]="settingsService.isDark()"
+    [class.card-borderd-theme]="settingsService.isCardBorder()"
+    [class.card-border-radius]="settingsService.isCardBorderRadius()"
+    [class.component-rtl-enabled]="settingsService.isRTLEnabled()"
+>
+    <div class="d-table">
+        <div class="d-table-cell">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
