@@ -39,8 +39,14 @@ const Dashboard = {
 
 const Customer = {
     text: 'Quản lý thành viên',
-    link: 'member/list',
+    link: '/member',
     icon: 'flaticon-users-group',
 };
 
-export const menu = [Dashboard, Customer];
+const Agency = {
+    text: 'Quản lý đại lý',
+    link: '/agency',
+    icon: 'flaticon-users-group',
+};
+
+export const menu = [Dashboard, Customer, Agency];

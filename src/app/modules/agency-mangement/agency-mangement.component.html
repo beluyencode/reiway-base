@@ -1,0 +1,9 @@
+<mat-card class="mb-25 tagus-card">
+    <mat-card-header class="border-bottom justify-content-end">
+        <button mat-raised-button (click)="switchViewType()">Switch</button>
+    </mat-card-header>
+    <mat-card-content>
+        <app-tree-manage-type *ngIf="isTreeView"></app-tree-manage-type>
+        <app-list-manage-type *ngIf="!isTreeView"></app-list-manage-type>
+    </mat-card-content>
+</mat-card>

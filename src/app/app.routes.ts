@@ -13,6 +13,8 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule) },
+            { path: 'member', loadChildren: () => import('./modules/member-mangement/member-mangement.module').then((m) => m.MemberMangementModule) },
+            { path: 'agency', loadChildren: () => import('./modules/agency-mangement/agency-mangement.module').then((m) => m.AgencyMangementModule) },
         ],
     },
     {
