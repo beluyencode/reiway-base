@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,7 +13,6 @@ import { SharedModule } from './shared/shared.module';
 import { SettingsComponent } from './layouts/settings/settings.component';
 import { InterceptorService } from './services/interceptor.service';
 import { AppRoutingModule } from './app.routes';
-import { BrowserModule } from '@angular/platform-browser';
 
 /**
  * Ngx Translate
@@ -46,4 +45,4 @@ export function httpTranslateLoader(http: HttpClient) {
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

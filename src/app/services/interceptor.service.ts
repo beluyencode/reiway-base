@@ -1,13 +1,19 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { environment } from '../../environments/environment.development';
+import { environment } from 'src/environments/environment';
+import { StorageService } from './storage.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class InterceptorService implements HttpInterceptor {
+    constructor(private router: Router, private storage: StorageService, private state: RouterStateSnapshot) {}
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        let token = this.storage.get('appToken');
+
         let url = '';
         if (!req.url.startsWith('/assets')) {
             url = environment.api + req.url;
@@ -18,13 +24,24 @@ export class InterceptorService implements HttpInterceptor {
             url: url,
         });
 
+        if (token) {
+            req = req.clone({
+                headers: req.headers.set('Authorization', `Bearer ${token}`),
+            });
+        } else {
+            if (!req.url.startsWith('/auth')) {
+                const route = this.router.createUrlTree(['/auth/login'], { queryParams: { returnUrl: this.state.url } });
+                this.router.navigateByUrl(route);
+            }
+        }
+
         return next.handle(req).pipe(
             tap(
                 (event: any) => {
                     if (typeof event !== 'undefined' && typeof event.body !== 'undefined') {
                         let body = event.body;
 
-                        if (typeof body.message !== 'undefined' && body.message !== 'SUCCESS' && !req.url.startsWith('/assets')) {
+                        if (!req.url.startsWith('/assets') && typeof body.status !== 'undefined' && body.status !== 'success') {
                             console.log('Lỗi');
                         }
                     }
@@ -34,9 +51,9 @@ export class InterceptorService implements HttpInterceptor {
                      * Check Error
                      */
                     if (err instanceof HttpErrorResponse) {
-                        console.log(err);
                         if (err.status === 401) {
-                            console.log('Lỗi đăng nhập');
+                            this.storage.remove('appToken');
+                            this.router.navigate(['/auth/login']);
                         }
                     }
                 }

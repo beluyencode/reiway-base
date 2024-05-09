@@ -1,1 +1,40 @@
-<p>login works!</p>
+<div class="tagus-form ms-auto me-auto">
+    <div class="title">
+        <img style="height: 65px" src="assets/img/logo/logo-black.svg" alt="logo-icon" />
+    </div>
+    <form [formGroup]="valForm" class="form-validate" role="form" name="form" novalidate (submit)="submitForm($event, valForm.value)">
+        <div class="bg-white border-radius pt-20 ps-20 pe-20">
+            <h2 class="me-30 mb-20">Đăng nhập</h2>
+            <div class="tagus-form-group without-icon">
+                <label class="d-block mb-12 fw-semibold gray-color">Số điện thoại <span>*</span></label>
+                <mat-form-field appearance="fill">
+                    <mat-label>Nhập số điện thoại</mat-label>
+                    <input matInput formControlName="phone" type="tel" inputmode="tel"/>
+                    <mat-error *ngIf="valForm.controls['phone'].hasError('required')">Trường bắt buộc</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="tagus-form-group without-icon">
+                <label class="d-block mb-12 fw-semibold gray-color">Mật khẩu <span>*</span></label>
+                <mat-form-field appearance="fill">
+                    <mat-label>Nhập mật khẩu</mat-label>
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+                    <button
+                        mat-icon-button
+                        matSuffix
+                        (click)="hidePassword = !hidePassword"
+                        [attr.aria-label]="'Ẩn mật khẩu'"
+                        [attr.aria-pressed]="hidePassword"
+                    >
+                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="valForm.controls['password'].hasError('required')">Trường bắt buộc</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex info align-items-center justify-content-space-between">
+            <mat-checkbox class="gray-color">Ghi nhớ</mat-checkbox>
+            <a routerLink="/authentication/forgot-password" class="d-inline-block main-color fw-medium">Quên mật khẩu?</a>
+        </div>
+        <button mat-flat-button class="tagus d-block fw-semibold">Đăng nhập</button>
+    </form>
+</div>

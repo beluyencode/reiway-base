@@ -1,24 +1,26 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'src/app/models/menu';
+import { MenuService } from 'src/app/services/menu.service';
 import { SettingsService } from 'src/app/services/settings.service';
 import { ToggleService } from 'src/app/services/toggle.service';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss'
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-    panelOpenState = false;
+    menuItems: Array<MenuItem>;
 
+    panelOpenState = false;
     isToggled = false;
 
-    constructor(
-        private toggleService: ToggleService,
-        public settingsService: SettingsService
-    ) {
-        this.toggleService.isToggled$.subscribe(isToggled => {
+    constructor(private toggleService: ToggleService, public settingsService: SettingsService, menu: MenuService) {
+        this.toggleService.isToggled$.subscribe((isToggled) => {
             this.isToggled = isToggled;
         });
+
+        this.menuItems = menu.getMenu();
     }
 
     toggle() {
@@ -32,5 +34,4 @@ export class SidebarComponent {
     toggleHideSidebarTheme() {
         this.settingsService.toggleHideSidebarTheme();
     }
-
 }

@@ -1,13 +1,17 @@
-<div
-    class="h-100vh pt-50 pb-50"
-    [class.component-dark-theme]="settingsService.isDark()"
-    [class.card-borderd-theme]="settingsService.isCardBorder()"
-    [class.card-border-radius]="settingsService.isCardBorderRadius()"
-    [class.component-rtl-enabled]="settingsService.isRTLEnabled()"
->
-    <div class="d-table">
-        <div class="d-table-cell">
-            <router-outlet></router-outlet>
+<div class="blank-page">
+    <div class="main-content d-flex flex-column p-0">
+        <div
+            class="h-100vh pt-50 pb-50"
+            [class.dark-theme]="settingsService.isDark()"
+            [class.card-borderd-theme]="settingsService.isCardBorder()"
+            [class.card-border-radius]="settingsService.isCardBorderRadius()"
+            [class.rtl-enabled]="settingsService.isRTLEnabled()"
+        >
+            <div class="d-table">
+                <div class="d-table-cell auth-page">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
         </div>
     </div>
 </div>

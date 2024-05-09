@@ -1,6 +1,6 @@
 <header
     class="header-area bg-white border-bottom-radius box-shadow mb-25"
-    [ngClass]="{'active': isToggled, 'sticky': isSticky}"
+    [ngClass]="{ active: isToggled, sticky: isSticky }"
     [class.component-dark-theme]="settingsService.isDark()"
     [class.right-sidebar]="settingsService.isRightSidebar()"
     [class.hide-sidebar]="settingsService.isHideSidebar()"
@@ -11,7 +11,7 @@
 >
     <div class="d-md-flex align-items-center justify-content-space-between">
         <div class="header-left-side d-flex align-items-center">
-            <div class="burger-menu" (click)="toggle()" [ngClass]="{'active': isToggled}">
+            <div class="burger-menu" (click)="toggle()" [ngClass]="{ active: isToggled }">
                 <span class="top-bar"></span>
                 <span class="middle-bar"></span>
                 <span class="bottom-bar"></span>
@@ -27,71 +27,70 @@
                 <div class="menu-body">
                     <div class="d-flex flex-wrap align-items-center">
                         <a href="#" class="dropdown-item" target="_blank">
-                            <img src="assets/img/web-apps/account.png" alt="image">
+                            <img src="assets/img/web-apps/account.png" alt="image" />
                             <span class="d-block mb-0 fw-medium">Account</span>
                         </a>
                         <a href="#" class="dropdown-item" target="_blank">
-                            <img src="assets/img/web-apps/google.png" alt="image">
+                            <img src="assets/img/web-apps/google.png" alt="image" />
                             <span class="d-block mb-0 fw-medium">Search</span>
                         </a>
                         <a href="#" class="dropdown-item" target="_blank">
-                            <img src="assets/img/web-apps/map.png" alt="image">
+                            <img src="assets/img/web-apps/map.png" alt="image" />
                             <span class="d-block mb-0 fw-medium">Maps</span>
                         </a>
                         <a href="#" class="dropdown-item" target="_blank">
-                            <img src="assets/img/web-apps/youtube.png" alt="image">
+                            <img src="assets/img/web-apps/youtube.png" alt="image" />
                             <span class="d-block mb-0 fw-medium">YouTube</span>
                         </a>
                         <a href="#" class="dropdown-item" target="_blank">
-                            <img src="assets/img/web-apps/playstore.png" alt="image">
+                            <img src="assets/img/web-apps/playstore.png" alt="image" />
                             <span class="d-block mb-0 fw-medium">Play</span>
                         </a>
                         <a href="#" class="dropdown-item" target="_blank">
-                            <img src="assets/img/web-apps/gmail.png" alt="image">
+                            <img src="assets/img/web-apps/gmail.png" alt="image" />
                             <span class="d-block mb-0 fw-medium">Gmail</span>
                         </a>
                         <a href="#" class="dropdown-item" target="_blank">
-                            <img src="assets/img/web-apps/drive.png" alt="image">
+                            <img src="assets/img/web-apps/drive.png" alt="image" />
                             <span class="d-block mb-0 fw-medium">Drive</span>
                         </a>
                         <a href="#" class="dropdown-item" target="_blank">
-                            <img src="assets/img/web-apps/calendar.png" alt="image">
+                            <img src="assets/img/web-apps/calendar.png" alt="image" />
                             <span class="d-block mb-0 fw-medium">Calendar</span>
                         </a>
                     </div>
-
                 </div>
                 <div class="menu-footer">
                     <a routerLink="/" class="fw-medium position-relative">View All <i class="flaticon-chevron"></i></a>
                 </div>
             </mat-menu>
             <form class="search-box position-relative">
-                <input type="text" class="input-search d-block" placeholder="Search here..">
+                <input type="text" class="input-search d-block" placeholder="Search here.." />
                 <button type="submit"><i class="ri-search-line"></i></button>
             </form>
         </div>
         <ul class="header-right-side d-flex align-items-center mt-0 mb-0">
             <li>
                 <button mat-icon-button [matMenuTriggerFor]="languageMenu" class="btn p-0 border-none rounded-circle position-relative">
-                    <img src="assets/img/flag/usa.png" alt="usa">
+                    <img src="assets/img/flag/usa.png" alt="usa" />
                 </button>
                 <mat-menu class="language-menu-dropdown" #languageMenu="matMenu" xPosition="after">
                     <ul class="m-0">
                         <li>
                             <button type="button" class="d-flex align-items-center border-none">
-                                <img src="assets/img/flag/usa.png" alt="usa">
+                                <img src="assets/img/flag/usa.png" alt="usa" />
                                 English
                             </button>
                         </li>
                         <li>
                             <button type="button" class="d-fle align-items-center border-none">
-                                <img src="assets/img/flag/spain.png" alt="spain">
+                                <img src="assets/img/flag/spain.png" alt="spain" />
                                 Spanish
                             </button>
                         </li>
                         <li>
                             <button type="button" class="d-fle align-items-center border-none">
-                                <img src="assets/img/flag/germany.png" alt="germany">
+                                <img src="assets/img/flag/germany.png" alt="germany" />
                                 German
                             </button>
                         </li>
@@ -110,7 +109,7 @@
                     <ul class="menu-body">
                         <li class="position-relative">
                             <div class="d-flex align-items-center">
-                                <img src="assets/img/user/user1.jpg" class="rounded-circle" alt="user">
+                                <img src="assets/img/user/user1.jpg" class="rounded-circle" alt="user" />
                                 <div class="title">
                                     <h6>Invoices have been paid</h6>
                                     <span><i class="flaticon-timer"></i> 14 mins ago</span>
@@ -121,7 +120,7 @@
                         </li>
                         <li class="position-relative">
                             <div class="d-flex align-items-center">
-                                <img src="assets/img/user/user2.jpg" class="rounded-circle" alt="user">
+                                <img src="assets/img/user/user2.jpg" class="rounded-circle" alt="user" />
                                 <div class="title">
                                     <h6>Allow users to like products</h6>
                                     <span><i class="flaticon-timer"></i> 30 mins ago</span>
@@ -132,7 +131,7 @@
                         </li>
                         <li class="position-relative">
                             <div class="d-flex align-items-center">
-                                <img src="assets/img/user/user4.jpg" class="rounded-circle" alt="user">
+                                <img src="assets/img/user/user4.jpg" class="rounded-circle" alt="user" />
                                 <div class="title">
                                     <h6>Your leave is approved</h6>
                                     <span><i class="flaticon-timer"></i> 2 hours ago</span>
@@ -143,7 +142,7 @@
                         </li>
                         <li class="position-relative">
                             <div class="d-flex align-items-center">
-                                <img src="assets/img/user/user5.jpg" class="rounded-circle" alt="user">
+                                <img src="assets/img/user/user5.jpg" class="rounded-circle" alt="user" />
                                 <div class="title">
                                     <h6>Live visits on our site</h6>
                                     <span><i class="flaticon-timer"></i> 5 hours ago</span>
@@ -159,7 +158,11 @@
                 </mat-menu>
             </li>
             <li>
-                <button mat-icon-button [matMenuTriggerFor]="notificationMenu" class="btn p-0 border-none rounded-circle position-relative notification-btn">
+                <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="notificationMenu"
+                    class="btn p-0 border-none rounded-circle position-relative notification-btn"
+                >
                     <i class="flaticon-bell-2"></i>
                 </button>
                 <mat-menu class="menu-dropdown" #notificationMenu="matMenu" xPosition="before">
@@ -208,32 +211,28 @@
                 </mat-menu>
             </li>
             <li class="d-none d-lg-block">
-                <div class="date-btn main-color fw-semibold position-relative">
-                    <i class="flaticon-calendar"></i> {{ formattedDate }}
-                </div>
+                <div class="date-btn main-color fw-semibold position-relative"><i class="flaticon-calendar"></i> {{ formattedDate }}</div>
             </li>
             <li>
-                <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-btn main-color border-none bg-transparent position-relative">
-                    <img src="assets/img/admin.jpg" class="rounded-circle" alt="admin">
+                <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="profileMenu"
+                    class="profile-btn main-color border-none bg-transparent position-relative"
+                >
+                    <img src="assets/img/admin.jpg" class="rounded-circle" alt="admin" />
                     Admin
                     <span class="fw-semibold">Adison Jack</span>
                 </button>
                 <mat-menu class="profile-menu-dropdown" #profileMenu="matMenu" xPosition="before">
                     <ul class="m-0">
                         <li>
-                            <a routerLink="/profile">
-                                <i class="ri-user-3-line"></i> Profile
-                            </a>
+                            <a routerLink="/profile"> <i class="ri-user-3-line"></i> Profile </a>
                         </li>
                         <li>
-                            <a routerLink="/account">
-                                <i class="ri-settings-3-line"></i> Settings
-                            </a>
+                            <a routerLink="/account"> <i class="ri-settings-3-line"></i> Settings </a>
                         </li>
                         <li>
-                            <a routerLink="/authentication/logout">
-                                <i class="ri-shut-down-line"></i> Logout
-                            </a>
+                            <a routerLink="/authentication/logout"> <i class="ri-shut-down-line"></i> Logout </a>
                         </li>
                     </ul>
                 </mat-menu>

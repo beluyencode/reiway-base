@@ -1,55 +1,39 @@
 import { Injectable } from '@angular/core';
-
-type StorageType = {
-    get(key: string): string | null;
-    set(key: string, value: string): void;
-    remove(key: string): void;
-};
-
-type StorageProxyType = {
-    Storage: StorageType | null;
-};
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root',
 })
+export class StorageService {
+    private _storage: Storage;
 
-class StorageImp {
-    _storage: Storage;
-
-    constructor(storage: Storage) {
-        this._storage = storage;
+    constructor() {
+        this._storage = environment.storage === 'session' ? window.sessionStorage : window.localStorage;
     }
 
-    get(key: string) {
+    /**
+     * Get Value
+     * @param key
+     * @returns
+     */
+    get(key: string): string | null {
         return this._storage.getItem(key);
     }
 
-    set(key: string, value: string) {
+    /**
+     * Set Value
+     * @param key
+     * @param value
+     */
+    set(key: string, value: string): void {
         this._storage.setItem(key, value);
     }
 
-    remove(key: string) {
+    /**
+     * Remove Value
+     * @param key
+     */
+    remove(key: string): void {
         this._storage.removeItem(key);
     }
-}
-
-export class StorageService {
-    StorageProxy: StorageProxyType = {
-        Storage: null,
-    };
-
-    applyStorage(storage: StorageType) {
-        this.StorageProxy.Storage = storage;
-    }
-
-    /**
-     * Get Local Storage
-     */
-    getLocalStorage = () => new StorageImp(window.localStorage);
-
-    /**
-     * Get Session Storage
-     */
-    getSessionStorage = () => new StorageImp(window.sessionStorage);
 }

@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutsComponent } from './layouts/layouts.component';
+import { MenuService } from './services/menu.service';
+import { menu } from './menu';
+import { authGuard } from './services/auth.guard';
 
 export const routes: Routes = [
     {
         path: '',
         component: LayoutsComponent,
+        canActivate: [authGuard],
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule) },
-            {
-                path: 'authentication',
-                loadChildren: () => import('./modules/authentication/authentication.module').then((m) => m.AuthenticationModule),
-            },
         ],
+    },
+    {
+        path: 'auth',
+        loadChildren: () => import('./modules/authentication/authentication.module').then((m) => m.AuthenticationModule),
     },
     { path: '**', redirectTo: 'dashboard' },
 ];
@@ -27,5 +31,7 @@ export const routes: Routes = [
     exports: [RouterModule],
 })
 export class AppRoutingModule {
-    constructor() {}
+    constructor(menuService: MenuService) {
+        menuService.addMenu(menu);
+    }
 }

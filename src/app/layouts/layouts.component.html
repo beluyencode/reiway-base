@@ -1,13 +1,4 @@
 <div
-    [ngClass]="{
-        'blank-page':
-            router.url === '/error-500' ||
-            router.url === '/authentication/reset-password' ||
-            router.url === '/authentication/forgot-password' ||
-            router.url === '/authentication/login' ||
-            router.url === '/authentication/register' ||
-            router.url === '/authentication/confirm-mail'
-    }"
     [class.dark-theme]="settingsService.isDark()"
     [class.card-borderd-theme]="settingsService.isCardBorder()"
     [class.card-border-radius]="settingsService.isCardBorderRadius()"
