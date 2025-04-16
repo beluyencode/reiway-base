@@ -3,11 +3,13 @@ import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } fr
 import { AuthService } from './auth.service';
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-    const authService = inject(AuthService);
-    const router = inject(Router);
-    if (authService.isAuth()) {
-        return true;
-    } else {
-        return router.createUrlTree(['/auth/login'], { queryParams: { returnUrl: state.url } });
-    }
+    // const authService = inject(AuthService);
+    // const router = inject(Router);
+    // if (authService.isAuth()) {
+    //     return true;
+    // } else {
+    //     return router.createUrlTree(['/auth/login'], { queryParams: { returnUrl: state.url } });
+    // }
+    return true;
+
 };
